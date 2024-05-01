@@ -19,12 +19,22 @@
       <div class="row ps-4 pe-4 text-end">
         <span class="fs-6 text-info"><small>Developed by Ezechiel</small></span>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
           {{bar_plot|safe}}
         </div>
         <div class="col-3"></div>
-      </div>
+      </div> -->
+      <form class="m-0 p-0 pt-4 pb-4 w-25 text-center bg-success text-white rounded" action="{% url 'BMIapp:index' %}" method="post">
+        {% csrf_token %}
+      
+        {% for field in bmi_form %}
+          <p class="w-100 text-center fs-6 m-0 p-0"><small>{{field.label}}</small></p>
+          <div class="w-100 text-center m-0 mb-2 p-0 form_field">{{field}}</div>
+        {% endfor %}
+      
+        <button class="w-75 m-0 p-1 fs-6 btn btn-sm btn-primary" type="submit">Calculate BMI</button>
+      </form>
     </footer>
 </body>
